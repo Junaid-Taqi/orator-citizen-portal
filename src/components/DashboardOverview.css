@@ -1,0 +1,8 @@
+.dashboard-overview {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 16px 0;
+  background: rgba(26, 38, 56, 0.4);
+  padding: 16px;
+  border-radius: 12px;
+}

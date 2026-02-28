@@ -1,3 +1,7 @@
+# Orator Citizen Portal
+
+This project has been refactored into a component‑based dashboard layout matching the design the user provided. Key components include `DashboardHeader`, `DashboardOverview`, `ReportStats`, and a reusable `StatCard`. Styles are defined in individual CSS files with a dark theme and gradients for the cards.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

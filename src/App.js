@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+
+// top‑level components
+import DashboardHeader from './components/DashboardHeader';
+import DashboardOverview from './components/DashboardOverview';
+import ReportStats from './components/ReportStats';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DashboardHeader />
+      <main className="app-main">
+        <div className="page-header">
+          <h2>Citizen Control Panel</h2>
+          <p className="page-subtitle">Monitor citizen engagement, track reports, and manage user activity</p>
+        </div>
+        <DashboardOverview />
+        <ReportStats />
+      </main>
     </div>
   );
 }
