@@ -1,5 +1,4 @@
 import React from 'react';
-import './StatCard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 /**
@@ -10,22 +9,43 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
  * - value: string or number
  * - subtitle: optional string (e.g. "+156 this week")
  * - icon: optional FontAwesome icon definition (from free-solid-svg-icons)
- * - className: optional extra class (for coloring)
+ * - variant: optional string to select color gradient (blue, green, purple, orange)
  */
-const StatCard = ({ title, value, subtitle, icon, className = '' }) => {
+const colorMap = {
+  blue: {
+    background: 'linear-gradient(135deg, #2b3f60 0%, #1c2b48 100%)',
+  },
+  green: {
+    background: 'linear-gradient(135deg, #2b603f 0%, #1b3f2b 100%)',
+  },
+  purple: {
+    background: 'linear-gradient(135deg, #4b2b60 0%, #2b1b4b 100%)',
+  },
+  orange: {
+    background: 'linear-gradient(135deg, #603f2b 0%, #3f2b1b 100%)',
+  },
+};
+
+const StatCard = ({ title, value, subtitle, icon, variant = 'blue' }) => {
+  const style = colorMap[variant] || {};
+
   return (
-    <div className={`stat-card ${className}`.trim()}>
-      <div className="stat-card-content">
-        <div className="stat-card-header">
-          <span className="stat-card-title">{title}</span>
-          {icon && (
-            <span className="stat-card-icon">
-              <FontAwesomeIcon icon={icon} />
-            </span>
-          )}
+    <div className="card text-white h-100" style={style}>
+      <div className="card-body d-flex flex-column justify-content-between">
+        <div className="d-flex justify-content-between align-items-center mb-2">
+          <h5 className="card-title mb-0" style={{ fontSize: '0.9rem', opacity: 0.8 }}>
+            {title}
+          </h5>
+          {icon && <FontAwesomeIcon icon={icon} />}
         </div>
-        <div className="stat-card-value">{value}</div>
-        {subtitle && <div className="stat-card-subtitle">{subtitle}</div>}
+        <div className="card-text" style={{ fontSize: '1.8rem', fontWeight: 'bold' }}>
+          {value}
+        </div>
+        {subtitle && (
+          <div className="text-white" style={{ fontSize: '0.75rem', opacity: 0.7 }}>
+            {subtitle}
+          </div>
+        )}
       </div>
     </div>
   );

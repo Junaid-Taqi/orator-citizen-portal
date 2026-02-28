@@ -11,9 +11,9 @@ function App() {
     <div className="App">
       <DashboardHeader />
       <main className="app-main">
-        <div className="page-header">
-          <h2>Citizen Control Panel</h2>
-          <p className="page-subtitle">Monitor citizen engagement, track reports, and manage user activity</p>
+        <div className="mb-4">
+          <h2 className="h4 mb-1 text-primary">Citizen Control Panel</h2>
+          <p className="text-white mb-3">Monitor citizen engagement, track reports, and manage user activity</p>
         </div>
         <DashboardOverview />
         <ReportStats />
