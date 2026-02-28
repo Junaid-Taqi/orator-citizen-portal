@@ -13,7 +13,7 @@ const ReportStats = () => {
   return (
     <div className="mb-4">
       <h2 className="mb-1">Report Statistics</h2>
-      <p className="text-muted mb-3">Overview of citizen problem reports</p>
+      <p className="text-white mb-3">Overview of citizen problem reports</p>
       <div className="row g-3">
         <div className="col-12 col-sm-6 col-md-4 col-lg-2">
           <StatCard
