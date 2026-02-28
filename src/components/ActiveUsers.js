@@ -44,7 +44,7 @@ const ActiveUsers = () => {
               {currentUsers.length > 0 ? (
                 currentUsers.map((user) => (
                   <tr key={user.userId}>
-                    <td>{user.name}</td>
+                    <td style={{ textTransform: 'capitalize' }}>{user.name}</td>
                     <td>{user.email}</td>
                     <td>{new Date(user.loginTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}</td>
                     <td>

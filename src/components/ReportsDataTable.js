@@ -125,12 +125,12 @@ const ReportsDataTable = ({ reports }) => {
                                 return (
                                     <tr key={report.reportId} style={{ background: 'rgba(45, 45, 80, 0.6)', backdropFilter: 'blur(8px)' }}>
                                         <td style={{ borderRadius: '10px 0 0 10px', padding: '1rem' }}>
-                                            <div style={{ color: '#ADD8E6', fontWeight: 600, fontSize: '0.9rem' }}>{report.title}</div>
+                                            <div style={{ color: '#ADD8E6', fontWeight: 600, fontSize: '0.9rem', textTransform: 'capitalize' }}>{report.title}</div>
                                             <div style={{ color: '#8BB8D6', fontSize: '0.8rem', marginTop: '2px' }}>{getTimeAgo(report.createDate)}</div>
                                         </td>
-                                        <td style={{ color: '#ADD8E6', fontSize: '0.9rem', padding: '1rem' }}>{report.category || 'N/A'}</td>
-                                        <td style={{ color: '#ADD8E6', fontSize: '0.9rem', padding: '1rem' }}>{report.assignedToUserName || 'Citizen'}</td>
-                                        <td style={{ color: '#ADD8E6', fontSize: '0.9rem', padding: '1rem' }}>{report.locationText}</td>
+                                        <td style={{ color: '#ADD8E6', fontSize: '0.9rem', padding: '1rem', textTransform: 'capitalize' }}>{report.category || 'N/A'}</td>
+                                        <td style={{ color: '#ADD8E6', fontSize: '0.9rem', padding: '1rem', textTransform: 'capitalize' }}>{report.citizenName}</td>
+                                        <td style={{ color: '#ADD8E6', fontSize: '0.9rem', padding: '1rem', textTransform: 'capitalize' }}>{report.locationText}</td>
                                         <td style={{ padding: '1rem' }}>
                                             <span className={priority.class} style={{ fontSize: '0.8rem' }}>{priority.label}</span>
                                         </td>
