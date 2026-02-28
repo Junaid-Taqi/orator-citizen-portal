@@ -26,14 +26,19 @@ const colorMap = {
   },
 };
 
-const StatCard = ({ title, value, subtitle, icon, variant = 'blue' }) => {
-  const style = colorMap[variant] || {};
+const StatCard = ({ title, value, subtitle, icon, variant = 'blue', plain = false }) => {
+  // if plain card requested, use a transparent background with border instead of gradient
+  const style = plain
+    ? { background: 'transparent', border: '1px solid rgba(255,255,255,0.3)' }
+    : colorMap[variant] || {};
+
+  const cardClass = plain ? 'card text-white h-100 bg-transparent' : 'card text-white h-100';
 
   return (
-    <div className="card text-white h-100" style={style}>
+    <div className={cardClass} style={style}>
       <div className="card-body d-flex flex-column justify-content-between">
         <div className="d-flex justify-content-between align-items-center mb-2">
-          <h5 className="card-title mb-0" style={{ fontSize: '0.9rem', opacity: 0.8 }}>
+          <h5 className="card-title mb-0 text-white" style={{ fontSize: '0.9rem', opacity: 0.8 }}>
             {title}
           </h5>
           {icon && <FontAwesomeIcon icon={icon} />}

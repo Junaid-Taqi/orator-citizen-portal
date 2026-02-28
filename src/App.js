@@ -5,6 +5,9 @@ import './App.css';
 import DashboardHeader from './components/DashboardHeader';
 import DashboardOverview from './components/DashboardOverview';
 import ReportStats from './components/ReportStats';
+import ActiveUsers from './components/ActiveUsers';
+import EngagementStats from './components/EngagementStats';
+import SectionTabs from './components/SectionTabs';
 
 function App() {
   return (
@@ -16,7 +19,8 @@ function App() {
           <p className="text-white mb-3">Monitor citizen engagement, track reports, and manage user activity</p>
         </div>
         <DashboardOverview />
-        <ReportStats />
+        <SectionTabs />
+        <ActiveUsers />
       </main>
     </div>
   );
