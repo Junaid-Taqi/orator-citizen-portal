@@ -1,26 +1,67 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchToken } from './Services/Slices/AuthSlice';
 import './App.css';
-
-// top‑level components
 import DashboardHeader from './components/DashboardHeader';
 import DashboardOverview from './components/DashboardOverview';
-import ReportStats from './components/ReportStats';
-import ActiveUsers from './components/ActiveUsers';
-import EngagementStats from './components/EngagementStats';
+import AdminReportsStats from './components/AdminReportsStats';
 import SectionTabs from './components/SectionTabs';
 
 function App() {
+  const dispatch = useDispatch();
+  const { token, expiresIn, status, error } = useSelector((state) => state.auth);
+
+  const user = JSON.parse(sessionStorage.getItem("liferayUser")) || {
+    "userId": "24608",
+    "fullName": "admin lahore",
+    "email": "admin@lahore.com",
+    "groups": [
+      {
+        "id": "24593",
+        "name": "Municipility One"
+      }
+    ]
+  }
+
+  useEffect(() => {
+    dispatch(fetchToken());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (token && expiresIn) {
+      const refreshTime = (expiresIn - 60) * 1000;
+      if (refreshTime > 0) {
+        const timer = setTimeout(() => {
+          dispatch(fetchToken());
+        }, refreshTime);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [token, expiresIn, dispatch]);
+
+  if (status === 'idle' || status === 'loading') {
+    return (
+      <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center' }}>
+        <div style={{ fontSize: '16px', fontWeight: 600 }}>Loading...</div>
+      </div>
+    );
+  }
+
+  if (status === 'failed') {
+    return (
+      <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', color: '#b91c1c' }}>
+        <div>Failed to load token{error ? `: ${error}` : ''}</div>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
-      <DashboardHeader />
+      <DashboardHeader user={user} />
       <main className="app-main">
-        <div className="mb-4">
-          <h2 className="h4 mb-1 text-primary">Citizen Control Panel</h2>
-          <p className="text-white mb-3">Monitor citizen engagement, track reports, and manage user activity</p>
-        </div>
         <DashboardOverview />
-        <SectionTabs />
-        <ActiveUsers />
+        <AdminReportsStats user={user} />
+        <SectionTabs user={user} />
       </main>
     </div>
   );

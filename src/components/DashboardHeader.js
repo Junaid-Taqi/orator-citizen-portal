@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DashboardHeader = () => (
+const DashboardHeader = ({ user }) => (
   <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#396C8D' }}>
     <div className="container-fluid">
       <span className="navbar-brand mb-0 h1 text-white">Municipality of Tisno</span>
@@ -30,10 +30,10 @@ const DashboardHeader = () => (
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Admin User
+              {user?.fullName}
             </span>
             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-              <li><span className="dropdown-item">admin@orator.com</span></li>
+              <li><span className="dropdown-item">{user?.email}</span></li>
             </ul>
           </li>
         </ul>

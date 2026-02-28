@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import EngagementStats from './EngagementStats';
-import ReportStats from './ReportStats';
+import CitizenReportsTab from './CitizenReportsTab';
+import ActiveUsers from './ActiveUsers';
 
-const SectionTabs = () => {
+const SectionTabs = ({ user }) => {
   const [active, setActive] = useState('engagement');
 
   return (
     <div className="mb-4">
-      <ul className="nav nav-tabs mb-3">
+      <ul className="nav nav-tabs cc-tabs mb-3">
         <li className="nav-item">
           <button
-            className={`nav-link ${active === 'engagement' ? 'active' : ''}`}
+            className={`nav-link cc-tab-btn ${active === 'engagement' ? 'active' : ''}`}
             onClick={() => setActive('engagement')}
           >
             Citizen Engagement
@@ -18,16 +19,24 @@ const SectionTabs = () => {
         </li>
         <li className="nav-item">
           <button
-            className={`nav-link ${active === 'reports' ? 'active' : ''}`}
+            className={`nav-link cc-tab-btn ${active === 'reports' ? 'active' : ''}`}
             onClick={() => setActive('reports')}
           >
             Citizen Reports
           </button>
         </li>
       </ul>
-      {active === 'engagement' ? <EngagementStats /> : <ReportStats />}
+      {active === 'engagement' ? (
+        <>
+          <EngagementStats />
+          <ActiveUsers />
+        </>
+      ) : (
+        <CitizenReportsTab user={user} />
+      )}
     </div>
   );
 };
 
 export default SectionTabs;
+

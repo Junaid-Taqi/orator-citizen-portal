@@ -12,27 +12,38 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
  * - variant: optional string to select color gradient (blue, green, purple, orange)
  */
 const colorMap = {
+  // Using the new glassmorphism colors matching displays dashboard
   blue: {
-    background: 'linear-gradient(135deg, #2b3f60 0%, #1c2b48 100%)',
+    background: 'rgba(50, 50, 94, 0.3)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(255, 255, 255, 0.06)'
   },
   green: {
-    background: 'linear-gradient(135deg, #2b603f 0%, #1b3f2b 100%)',
+    background: 'rgba(50, 50, 94, 0.3)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(255, 255, 255, 0.06)'
   },
   purple: {
-    background: 'linear-gradient(135deg, #4b2b60 0%, #2b1b4b 100%)',
+    background: 'rgba(50, 50, 94, 0.3)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(255, 255, 255, 0.06)'
   },
   orange: {
-    background: 'linear-gradient(135deg, #603f2b 0%, #3f2b1b 100%)',
+    background: 'rgba(50, 50, 94, 0.3)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(255, 255, 255, 0.06)'
   },
 };
 
 const StatCard = ({ title, value, subtitle, icon, variant = 'blue', plain = false }) => {
   // if plain card requested, use a transparent background with border instead of gradient
-  const style = plain
-    ? { background: 'transparent', border: '1px solid rgba(255,255,255,0.3)' }
-    : colorMap[variant] || {};
+  const style = colorMap[variant] || {
+    background: 'rgba(50, 50, 94, 0.3)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(255, 255, 255, 0.06)'
+  };
 
-  const cardClass = plain ? 'card text-white h-100 bg-transparent' : 'card text-white h-100';
+  const cardClass = 'card text-white h-100';
 
   return (
     <div className={cardClass} style={style}>
