@@ -22,6 +22,12 @@ const DashboardOverview = ({ user }) => {
     }
   }, [dispatch, groupId, status]);
 
+  const formatSubtitle = (text) => {
+    if (!text) return '';
+    // Replace CP-1252 garbled characters back to proper unicode arrows
+    return text.replace('â†‘', '↑').replace('â†“', '↓');
+  };
+
   return (
     <div className="card border-secondary rounded-3 mb-4" style={{ background: 'rgba(45, 45, 80, 0.4)', backdropFilter: 'blur(8px)', borderColor: 'rgba(255,255,255,0.06)' }}>
       <div className="card-body">
@@ -40,7 +46,7 @@ const DashboardOverview = ({ user }) => {
             <StatCard
               title="Total Citizens"
               value={counters?.totalCitizens || 0}
-              subtitle={counters?.totalCitizensSubtitle || ''}
+              subtitle={formatSubtitle(counters?.totalCitizensSubtitle)}
               icon={faUsers}
               variant="blue"
             />
@@ -49,7 +55,7 @@ const DashboardOverview = ({ user }) => {
             <StatCard
               title="Active Today"
               value={counters?.activeToday || 0}
-              subtitle={counters?.activeChangeSubtitle || ''}
+              subtitle={formatSubtitle(counters?.activeChangeSubtitle)}
               icon={faCheckCircle}
               variant="green"
             />
@@ -58,7 +64,7 @@ const DashboardOverview = ({ user }) => {
             <StatCard
               title="New This Week"
               value={counters?.newThisWeek || 0}
-              subtitle={counters?.newWeekChangeSubtitle || ''}
+              subtitle={formatSubtitle(counters?.newWeekChangeSubtitle)}
               icon={faEye}
               variant="purple" // Changed variant so the 3 colors match nicely (blue, green, purple instead of orange for 4th)
             />

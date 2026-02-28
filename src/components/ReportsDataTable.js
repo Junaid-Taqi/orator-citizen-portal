@@ -6,7 +6,7 @@ const ReportsDataTable = ({ reports }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [filterStatus, setFilterStatus] = useState('All Status');
     const [filterValidation, setFilterValidation] = useState('All Reports');
-    const itemsPerPage = 8;
+    const itemsPerPage = 10;
 
     // Formatting strings
     const getStatusString = (status) => {
