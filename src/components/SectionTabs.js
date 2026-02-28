@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import EngagementStats from './EngagementStats';
 import CitizenReportsTab from './CitizenReportsTab';
 import ActiveUsers from './ActiveUsers';
 
@@ -27,10 +26,7 @@ const SectionTabs = ({ user }) => {
         </li>
       </ul>
       {active === 'engagement' ? (
-        <>
-          <EngagementStats />
-          <ActiveUsers />
-        </>
+        <ActiveUsers />
       ) : (
         <CitizenReportsTab user={user} />
       )}
