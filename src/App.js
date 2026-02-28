@@ -59,7 +59,7 @@ function App() {
     <div className="App">
       <DashboardHeader user={user} />
       <main className="app-main">
-        <DashboardOverview />
+        <DashboardOverview user={user} />
         <AdminReportsStats user={user} />
         <SectionTabs user={user} />
       </main>

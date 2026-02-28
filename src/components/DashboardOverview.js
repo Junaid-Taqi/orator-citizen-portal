@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchActiveCitizensAdmin } from '../Services/Slices/ActiveCitizensSlice';
 import StatCard from './StatCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -8,7 +10,18 @@ import {
   faEye,
 } from '@fortawesome/free-solid-svg-icons';
 
-const DashboardOverview = () => {
+const DashboardOverview = ({ user }) => {
+  const dispatch = useDispatch();
+  const { counters, status, error } = useSelector((state) => state.ActiveCitizens);
+
+  const groupId = user?.groups?.[0]?.id;
+
+  useEffect(() => {
+    if (groupId && status === 'idle') {
+      dispatch(fetchActiveCitizensAdmin({ groupId }));
+    }
+  }, [dispatch, groupId, status]);
+
   return (
     <div className="card border-secondary rounded-3 mb-4" style={{ background: 'rgba(45, 45, 80, 0.4)', backdropFilter: 'blur(8px)', borderColor: 'rgba(255,255,255,0.06)' }}>
       <div className="card-body">
@@ -18,41 +31,36 @@ const DashboardOverview = () => {
             <p className="text-white mb-0" style={{ opacity: 0.8, fontSize: '0.85rem' }}>Monitor citizen engagement, track reports, and manage user activity</p>
           </div>
         </div>
+
+        {status === 'loading' && <div className="text-white mb-3" style={{ opacity: 0.8 }}>Loading statistics...</div>}
+        {status === 'failed' && <div className="text-danger mb-3">Error fetching statistics: {error}</div>}
+
         <div className="row g-3">
-          <div className="col-12 col-sm-6 col-md-3">
+          <div className="col-12 col-sm-6 col-md-4">
             <StatCard
               title="Total Citizens"
-              value="3,847"
-              subtitle="+156 this week"
+              value={counters?.totalCitizens || 0}
+              subtitle={counters?.totalCitizensSubtitle || ''}
               icon={faUsers}
               variant="blue"
             />
           </div>
-          <div className="col-12 col-sm-6 col-md-3">
+          <div className="col-12 col-sm-6 col-md-4">
             <StatCard
               title="Active Today"
-              value="892"
-              subtitle="↑ 12.3% vs yesterday"
+              value={counters?.activeToday || 0}
+              subtitle={counters?.activeChangeSubtitle || ''}
               icon={faCheckCircle}
               variant="green"
             />
           </div>
-          <div className="col-12 col-sm-6 col-md-3">
-            <StatCard
-              title="Avg Engagement"
-              value="78%"
-              subtitle="↑ 5.2% this month"
-              icon={faChartLine}
-              variant="purple"
-            />
-          </div>
-          <div className="col-12 col-sm-6 col-md-3">
+          <div className="col-12 col-sm-6 col-md-4">
             <StatCard
               title="New This Week"
-              value="156"
-              subtitle="↑ 8.7% vs last week"
+              value={counters?.newThisWeek || 0}
+              subtitle={counters?.newWeekChangeSubtitle || ''}
               icon={faEye}
-              variant="orange"
+              variant="purple" // Changed variant so the 3 colors match nicely (blue, green, purple instead of orange for 4th)
             />
           </div>
         </div>
