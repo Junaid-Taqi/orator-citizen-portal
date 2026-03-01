@@ -27,20 +27,37 @@ svg.svg-inline--fa.fa-users {
 svg.svg-inline--fa.fa-eye {
     color: #ca36ca;
 }
-td {
-    background: rgb(56, 98, 127) !important;
+.loggedInCitizensTable td {
+    background: rgb(26 70 100) !important;
     color: #fff !important;
     background: #ffffff0d;
     border: 1px solid #ffffff1a;
     font-size: 12px;
 }
 
-th{
-  background: rgb(120 158 184 / 37%) !important;
+.loggedInCitizensTable th{
+    background: rgb(120 158 184 / 37%) !important;
     color: #fff !important;
     background: #ffffff0d;
     border: 1px solid #ffffff1a;
     font-size: 12px;
+}
+.reportDataTable th{
+    background: rgb(120 158 184 / 37%) !important;
+    color: #fff !important;
+    background: #ffffff0d;
+    border: 1px solid #ffffff1a;
+    font-size: 12px;
+}
+.reportDataTable td {
+    background: rgb(26 70 100) !important;
+    color: #fff !important;
+    background: #ffffff0d;
+    border: 1px solid #ffffff1a;
+    font-size: 12px;
+}
+select.form-select {
+    background: rgb(26 70 100) !important;
 }
 ul.nav.nav-tabs.cc-tabs {
     border: 0 !important;

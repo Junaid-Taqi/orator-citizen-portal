@@ -33,7 +33,7 @@ const ActiveUsers = () => {
         {status === 'failed' && <div className="text-danger mb-3">Error fetching users: {error}</div>}
 
         <div className="table-responsive">
-          <table className="table table-borderless align-middle mb-0">
+          <table className="table table-borderless align-middle mb-0 loggedInCitizensTable">
             <thead>
               <tr>
                 <th>Citizen Name</th>
