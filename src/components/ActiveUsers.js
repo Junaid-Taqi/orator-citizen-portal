@@ -25,7 +25,7 @@ const ActiveUsers = () => {
         <div className="d-flex justify-content-between align-items-start mb-3">
           <div>
             <h5 className="card-title mb-0 text-white">Currently Logged In Citizens</h5>
-            <p className="text-primary mb-0 fs-12">Active user sessions right now</p>
+            <p className="text-primary mb-0 fs-12">Active user sessions today</p>
           </div>
         </div>
 
