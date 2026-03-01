@@ -29,12 +29,12 @@ const DashboardOverview = ({ user }) => {
   };
 
   return (
-    <div className="card border-secondary rounded-3 mb-4" style={{ background: 'rgba(45, 45, 80, 0.4)', backdropFilter: 'blur(8px)', borderColor: 'rgba(255,255,255,0.06)' }}>
+    <div className="card border-secondary rounded-3 mb-4" style={{ background: 'rgb(56,98,127)', backdropFilter: 'blur(8px)', borderColor: 'rgba(255,255,255,0.06)' }}>
       <div className="card-body">
         <div className="d-flex justify-content-between align-items-start mb-3">
           <div>
             <h5 className="card-title mb-0 text-white" style={{ fontSize: '1.25rem' }}>Citizen Control Panel</h5>
-            <p className="text-white mb-0" style={{ opacity: 0.8, fontSize: '0.85rem' }}>Monitor citizen engagement, track reports, and manage user activity</p>
+            <p className="text-primary mb-0" style={{ opacity: 0.8, fontSize: '0.85rem' }}>Monitor citizen engagement, track reports, and manage user activity</p>
           </div>
         </div>
 

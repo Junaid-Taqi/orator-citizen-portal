@@ -18,14 +18,14 @@ const AdminReportsStats = ({ user }) => {
     }, [dispatch, groupId, status]);
 
     return (
-        <div className="card border-secondary rounded-3 mb-4" style={{ background: 'rgba(45, 45, 80, 0.4)', backdropFilter: 'blur(8px)', borderColor: 'rgba(255,255,255,0.06)' }}>
+        <div className="card border-secondary rounded-3 mb-4" style={{ background: 'rgb(56,98,127)', backdropFilter: 'blur(8px)', borderColor: 'rgba(255,255,255,0.06)' }}>
             <div className="card-body">
                 <div className="d-flex justify-content-between align-items-start mb-3">
                     <div>
                         <h5 className="card-title mb-0 text-white" style={{ fontSize: '1.25rem' }}>Report Statistics</h5>
-                        <p className="text-white mb-0" style={{ opacity: 0.8, fontSize: '0.85rem' }}>Overview of citizen problem reports</p>
+                        <p className="text-primary mb-0" style={{ opacity: 0.8, fontSize: '0.85rem' }}>Overview of citizen problem reports</p>
                     </div>
-                    <FontAwesomeIcon icon={faCommentAlt} className="text-white opacity-50" style={{ fontSize: '1.5rem' }} />
+                    <FontAwesomeIcon icon={faCommentAlt} className="text-primary opacity-50" style={{ fontSize: '1.5rem' }} />
                 </div>
 
                 {status === 'loading' && <div className="text-white mb-3" style={{ opacity: 0.8 }}>Loading statistics...</div>}

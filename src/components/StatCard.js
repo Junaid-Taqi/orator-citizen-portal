@@ -38,7 +38,7 @@ const colorMap = {
 const StatCard = ({ title, value, subtitle, icon, variant = 'blue', plain = false }) => {
   // if plain card requested, use a transparent background with border instead of gradient
   const style = colorMap[variant] || {
-    background: 'rgba(50, 50, 94, 0.3)',
+    background: 'rgba(45, 45, 80, 0.23)',
     backdropFilter: 'blur(10px)',
     border: '1px solid rgba(255, 255, 255, 0.06)'
   };
@@ -49,16 +49,16 @@ const StatCard = ({ title, value, subtitle, icon, variant = 'blue', plain = fals
     <div className={cardClass} style={style}>
       <div className="card-body d-flex flex-column justify-content-between">
         <div className="d-flex justify-content-between align-items-center mb-2">
-          <h5 className="card-title mb-0 text-white" style={{ fontSize: '0.9rem', opacity: 0.8 }}>
+          <h5 className="card-title mb-0 text-primary" style={{ fontSize: '0.9rem', opacity: 0.5 }}>
             {title}
           </h5>
           {icon && <FontAwesomeIcon icon={icon} />}
         </div>
-        <div className="card-text" style={{ fontSize: '1.8rem', fontWeight: 'bold' }}>
+        <div className="card-text" style={{ fontSize: '1.8rem' }}>
           {value}
         </div>
         {subtitle && (
-          <div className="text-white" style={{ fontSize: '0.75rem', opacity: 0.7 }}>
+          <div className="text-green" style={{ fontSize: '0.75rem'}}>
             {subtitle}
           </div>
         )}

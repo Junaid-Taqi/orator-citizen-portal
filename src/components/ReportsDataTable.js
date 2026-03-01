@@ -106,7 +106,7 @@ const ReportsDataTable = ({ reports }) => {
                 </div>
 
                 <div className="table-responsive" style={{ background: '#1F3D55', borderRadius: '12px', padding: '0 6px 6px 0' }}>
-                    <table className="table table-dark table-borderless align-middle mb-0" style={{ backgroundColor: 'transparent', borderCollapse: 'separate', borderSpacing: '0 6px' }}>
+                    <table className="table table-borderless align-middle mb-0" style={{ backgroundColor: 'transparent', borderCollapse: 'separate', borderSpacing: '0 6px' }}>
                         <thead>
                             <tr>
                                 <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Report Title</th>

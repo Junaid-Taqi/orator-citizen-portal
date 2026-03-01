@@ -10,3 +10,41 @@
 .text-primary {
   color: #00CFEF !important;
 }
+.text-green {
+  color: #28d328 !important;
+}
+
+.bg-primary {
+  background: #00CFEF !important;
+}
+
+svg.svg-inline--fa.fa-circle-check {
+    color: #28be28 !important;
+}
+svg.svg-inline--fa.fa-users {
+    color: #28809e;
+}
+svg.svg-inline--fa.fa-eye {
+    color: #ca36ca;
+}
+th, td {
+    background: rgb(56, 98, 127) !important;
+    color: #fff !important;
+    background: #ffffff0d;
+    border: 1px solid #ffffff1a;
+}
+ul.nav.nav-tabs.cc-tabs {
+    border: 0 !important;
+}
+button.nav-link.cc-tab-btn.active {
+    background: #00CFEF !important;
+    border: 0 !important;
+    border-radius: 10px;
+    color: #fff;
+}
+button.nav-link.cc-tab-btn {
+    border: 1px solid #ffffff4d !important;
+    border-radius: 10px;
+    margin: 0 10px;
+    color: #fff;
+}

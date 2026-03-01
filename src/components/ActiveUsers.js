@@ -23,7 +23,7 @@ const ActiveUsers = () => {
         <div className="d-flex justify-content-between align-items-start mb-3">
           <div>
             <h5 className="card-title mb-0 text-white">Currently Logged In Citizens</h5>
-            <p className="text-white mb-0">Active user sessions right now</p>
+            <p className="text-primary mb-0">Active user sessions right now</p>
           </div>
         </div>
 
@@ -31,7 +31,7 @@ const ActiveUsers = () => {
         {status === 'failed' && <div className="text-danger mb-3">Error fetching users: {error}</div>}
 
         <div className="table-responsive">
-          <table className="table table-dark table-borderless align-middle mb-0">
+          <table className="table table-borderless align-middle mb-0">
             <thead>
               <tr>
                 <th>Citizen Name</th>
