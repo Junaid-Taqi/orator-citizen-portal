@@ -14,24 +14,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const colorMap = {
   // Using the new glassmorphism colors matching displays dashboard
   blue: {
-    background: 'rgba(50, 50, 94, 0.3)',
+    background: 'rgb(43 105 137 / 43%)',
     backdropFilter: 'blur(10px)',
-    border: '1px solid rgba(255, 255, 255, 0.06)'
+    border: '1px solid #00d4d44d'
   },
   green: {
-    background: 'rgba(50, 50, 94, 0.3)',
+    background: 'rgb(43 105 137 / 43%)',
     backdropFilter: 'blur(10px)',
-    border: '1px solid rgba(255, 255, 255, 0.06)'
+    border: '1px solid #00d4d44d'
   },
   purple: {
-    background: 'rgba(50, 50, 94, 0.3)',
+    background: 'rgb(43 105 137 / 43%)',
     backdropFilter: 'blur(10px)',
-    border: '1px solid rgba(255, 255, 255, 0.06)'
+    border: '1px solid #00d4d44d'
   },
   orange: {
-    background: 'rgba(50, 50, 94, 0.3)',
+    background: 'rgb(43 105 137 / 43%)',
     backdropFilter: 'blur(10px)',
-    border: '1px solid rgba(255, 255, 255, 0.06)'
+    border: '1px solid #00d4d44d'
   },
 };
 
@@ -40,7 +40,7 @@ const StatCard = ({ title, value, subtitle, icon, variant = 'blue', plain = fals
   const style = colorMap[variant] || {
     background: 'rgba(45, 45, 80, 0.23)',
     backdropFilter: 'blur(10px)',
-    border: '1px solid rgba(255, 255, 255, 0.06)'
+    border: '1px solid #00d4d44d'
   };
 
   const cardClass = 'card text-white h-100';
@@ -49,7 +49,7 @@ const StatCard = ({ title, value, subtitle, icon, variant = 'blue', plain = fals
     <div className={cardClass} style={style}>
       <div className="card-body d-flex flex-column justify-content-between">
         <div className="d-flex justify-content-between align-items-center mb-2">
-          <h5 className="card-title mb-0 text-primary" style={{ fontSize: '0.9rem', opacity: 0.5 }}>
+          <h5 className="card-title mb-0 text-primary fs-12" style={{ opacity: 0.5 }}>
             {title}
           </h5>
           {icon && <FontAwesomeIcon icon={icon} />}

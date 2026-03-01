@@ -18,12 +18,12 @@ const AdminReportsStats = ({ user }) => {
     }, [dispatch, groupId, status]);
 
     return (
-        <div className="card border-secondary rounded-3 mb-4" style={{ background: 'rgb(56,98,127)', backdropFilter: 'blur(8px)', borderColor: 'rgba(255,255,255,0.06)' }}>
+        <div className="card border-secondary rounded-3 mb-4" style={{ background: 'rgb(21 0 128 / 16%)', backdropFilter: 'blur(8px)', borderColor: 'rgba(255,255,255,0.06)' }}>
             <div className="card-body">
                 <div className="d-flex justify-content-between align-items-start mb-3">
                     <div>
                         <h5 className="card-title mb-0 text-white" style={{ fontSize: '1.25rem' }}>Report Statistics</h5>
-                        <p className="text-primary mb-0" style={{ opacity: 0.8, fontSize: '0.85rem' }}>Overview of citizen problem reports</p>
+                        <p className="text-primary mb-0 fs-12" style={{ opacity: 0.8 }}>Overview of citizen problem reports</p>
                     </div>
                     <FontAwesomeIcon icon={faCommentAlt} className="text-primary opacity-50" style={{ fontSize: '1.5rem' }} />
                 </div>
@@ -32,7 +32,7 @@ const AdminReportsStats = ({ user }) => {
                 {status === 'failed' && <div className="text-danger mb-3">Error fetching statistics: {error}</div>}
 
                 <div className="row g-3">
-                    <div className="col-12 col-sm-6 col-md-4 col-lg-2" style={{ flex: '1' }}>
+                    <div className="col-12 col-sm-6 col-md-4 col-lg-2 TotalReports" style={{ flex: '1' }}>
                         <StatCard
                             title="Total Reports"
                             value={counters?.total || 0}

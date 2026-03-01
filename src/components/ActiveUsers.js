@@ -1,3 +1,5 @@
+import { faClock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -23,7 +25,7 @@ const ActiveUsers = () => {
         <div className="d-flex justify-content-between align-items-start mb-3">
           <div>
             <h5 className="card-title mb-0 text-white">Currently Logged In Citizens</h5>
-            <p className="text-primary mb-0">Active user sessions right now</p>
+            <p className="text-primary mb-0 fs-12">Active user sessions right now</p>
           </div>
         </div>
 
@@ -45,8 +47,8 @@ const ActiveUsers = () => {
                 currentUsers.map((user) => (
                   <tr key={user.userId}>
                     <td style={{ textTransform: 'capitalize' }}>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>{new Date(user.loginTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}</td>
+                    <td className='text-primary'>{user.email}</td>
+                    <td><FontAwesomeIcon icon={faClock} className="me-2 text-primary" /> {new Date(user.loginTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}</td>
                     <td>
                       <span className="badge bg-secondary">{user.reports}</span>
                     </td>
@@ -68,11 +70,11 @@ const ActiveUsers = () => {
         {/* Pagination */}
         {totalPages > 0 && (
           <div className="d-flex justify-content-between align-items-center mt-4">
-            <span className="text-white" style={{ opacity: 0.7, fontSize: '0.85rem' }}>Showing {startIndex + 1} to {Math.min(startIndex + itemsPerPage, displayUsers.length)} of {displayUsers.length}</span>
+            <span className="text-white fs-12" style={{ opacity: 0.7 }}>Showing {startIndex + 1} to {Math.min(startIndex + itemsPerPage, displayUsers.length)} of {displayUsers.length}</span>
             <div className="btn-group">
-              <button className="btn btn-sm btn-outline-secondary text-white" onClick={handlePrev} disabled={currentPage === 1}>Previous</button>
-              <button className="btn btn-sm btn-secondary text-white" disabled>{currentPage}</button>
-              <button className="btn btn-sm btn-outline-secondary text-white" onClick={handleNext} disabled={currentPage === totalPages}>Next</button>
+              <button className="btn btn-sm btn-outline-secondary text-white fs-12" onClick={handlePrev} disabled={currentPage === 1}>Previous</button>
+              <button className="btn btn-sm btn-secondary text-white fs-12" disabled>{currentPage}</button>
+              <button className="btn btn-sm btn-outline-secondary text-white fs-12" onClick={handleNext} disabled={currentPage === totalPages}>Next</button>
             </div>
           </div>
         )}

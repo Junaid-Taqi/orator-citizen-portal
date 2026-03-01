@@ -1,45 +1,81 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faChevronDown, faChevronUp, faSignOutAlt, faUser} from "@fortawesome/free-solid-svg-icons";
 
-const DashboardHeader = ({ user }) => (
-  <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#396C8D' }}>
-    <div className="container-fluid">
-      <span className="navbar-brand mb-0 h1 text-white">Municipality of Tisno</span>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-          <li className="nav-item me-3">
-            <span className="nav-link" style={{ cursor: 'pointer' }}>
-              🔔
-            </span>
-          </li>
-          <li className="nav-item dropdown">
-            <span
-              className="nav-link dropdown-toggle"
-              id="userDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {user?.fullName}
-            </span>
-            <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-              <li><span className="dropdown-item">{user?.email}</span></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-);
+const DisplayNav = ({user}) => {
+    const [userMenuOpen, setUserMenuOpen] = useState(false);
+    const userMenuRef = useRef(null);
 
-export default DashboardHeader;
+    // Click outside to close menu logic
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
+                setUserMenuOpen(false);
+            }
+        };
+        if (userMenuOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [userMenuOpen]);
+
+    const handleLogout = () => {
+        setUserMenuOpen(false);
+        window.location.href = '/c/portal/logout';
+    };
+
+    return (
+        <nav className="displays-dashboard__nav">
+            <div className="header-left">
+                <h5 className="header-title m-0 text-primary">MUNICIPALITY OF TISNO</h5>
+                <p className="header-subtitle fs-12 text-white m-0">Monitor your digital signage network</p>
+            </div>
+
+            <div className="displays-dashboard__nav-user-wrap" ref={userMenuRef}>
+                <button
+                    type="button"
+                    className="displays-dashboard__nav-user"
+                    onClick={() => setUserMenuOpen((v) => !v)}
+                    aria-expanded={userMenuOpen}
+                    aria-haspopup="true"
+                >
+                    <i className="pi pi-user nav-user-icon"/>
+
+                    <div className="nav-user-info">
+                        <span className="nav-user-name">{user?.fullName || "User Name"}</span>
+                        <span className="nav-user-email">{user?.email || "user@email.com"}</span>
+                    </div>
+
+                    {/* Toggle Arrow Logic */}
+                    <div className="nav-user-chevron-box">
+                        <FontAwesomeIcon
+                            icon={userMenuOpen ? faChevronUp : faChevronDown}
+                            className="nav-user-chevron"
+                        />
+                    </div>
+                </button>
+
+                {/* Dropdown Menu */}
+                {userMenuOpen && (
+                    <div className="displays-dashboard__nav-user-menu" role="menu">
+                        <button type="button" className="displays-dashboard__nav-user-menu-item" role="menuitem">
+                            <FontAwesomeIcon icon={faUser} style={{marginRight: '10px'}}/>
+                            Profile
+                        </button>
+                        <button
+                            type="button"
+                            className="displays-dashboard__nav-user-menu-item displays-dashboard__nav-user-menu-item--logout"
+                            role="menuitem"
+                            onClick={handleLogout}
+                        >
+                            <FontAwesomeIcon icon={faSignOutAlt} style={{marginRight: '10px'}}/>
+                            Logout
+                        </button>
+                    </div>
+                )}
+            </div>
+        </nav>
+    );
+};
+
+export default DisplayNav;

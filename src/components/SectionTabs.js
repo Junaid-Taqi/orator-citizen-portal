@@ -10,7 +10,7 @@ const SectionTabs = ({ user }) => {
       <ul className="nav nav-tabs cc-tabs mb-3">
         <li className="nav-item">
           <button
-            className={`nav-link cc-tab-btn ${active === 'engagement' ? 'active' : ''}`}
+            className={`nav-link cc-tab-btn fs-12 ${active === 'engagement' ? 'active' : ''}`}
             onClick={() => setActive('engagement')}
           >
             Citizen Engagement
@@ -18,7 +18,7 @@ const SectionTabs = ({ user }) => {
         </li>
         <li className="nav-item">
           <button
-            className={`nav-link cc-tab-btn ${active === 'reports' ? 'active' : ''}`}
+            className={`nav-link cc-tab-btn fs-12 ${active === 'reports' ? 'active' : ''}`}
             onClick={() => setActive('reports')}
           >
             Citizen Reports

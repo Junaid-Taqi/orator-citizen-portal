@@ -34,7 +34,7 @@ const DashboardOverview = ({ user }) => {
         <div className="d-flex justify-content-between align-items-start mb-3">
           <div>
             <h5 className="card-title mb-0 text-white" style={{ fontSize: '1.25rem' }}>Citizen Control Panel</h5>
-            <p className="text-primary mb-0" style={{ opacity: 0.8, fontSize: '0.85rem' }}>Monitor citizen engagement, track reports, and manage user activity</p>
+            <p className="text-primary mb-0 fs-12" style={{ opacity: 0.8 }}>Monitor citizen engagement, track reports, and manage user activity</p>
           </div>
         </div>
 
