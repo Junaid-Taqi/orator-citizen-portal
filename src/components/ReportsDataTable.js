@@ -293,7 +293,7 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                 )}
 
                 <div className="row mb-4">
-                    <div className="col-md-6 mb-3 mb-md-0">
+                    <div className="col-md-6 mb-3 mb-4">
                         <label className="text-white mb-1" style={{ fontSize: '0.85rem', opacity: 0.8 }}>Filter by Status</label>
                         <select className="form-select bg-dark text-white border-secondary" value={filterStatus} onChange={e => { setFilterStatus(e.target.value); setCurrentPage(1); }}>
                             <option>All Status</option>
@@ -303,7 +303,7 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                             <option>Rejected</option>
                         </select>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 mb-4">
                         <label className="text-white mb-1" style={{opacity: 0.8 }}>Filter by Validation</label>
                         <select className="form-select bg-dark text-white border-secondary" value={filterValidation} onChange={e => { setFilterValidation(e.target.value); setCurrentPage(1); }}>
                             <option>All Reports</option>
