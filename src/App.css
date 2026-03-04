@@ -707,3 +707,7 @@ span.badge.bg-secondary {
 .add-display-form__submit:hover {
   opacity: 0.9;
 }
+
+.table thead th, .table thead td{
+  background-color: rgba(120, 158, 184, 1) !important;
+}

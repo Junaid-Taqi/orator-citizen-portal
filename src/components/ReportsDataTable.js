@@ -317,14 +317,14 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                     <table className="table table-borderless align-middle mb-0 reportDataTable" style={{ backgroundColor: 'transparent', borderCollapse: 'separate', borderSpacing: '0 6px' }}>
                         <thead>
                             <tr>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Report Title</th>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Category</th>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Submitted By</th>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Location</th>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Priority</th>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Status</th>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Validated</th>
-                                <th className="fw-normal text-center" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Actions</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em'}}>Report Title</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Category</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Submitted By</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Location</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Priority</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Status</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Validated</th>
+                                <th className="fw-normal text-center" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
