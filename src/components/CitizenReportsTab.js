@@ -23,7 +23,13 @@ const CitizenReportsTab = ({ user }) => {
 
 
 
-            <ReportsDataTable reports={reportsList} />
+            <ReportsDataTable
+                reports={reportsList}
+                user={user}
+                onRefresh={() => {
+                    if (groupId) dispatch(fetchAllReportsAdmin({ groupId }));
+                }}
+            />
         </div>
     );
 };
