@@ -70,6 +70,19 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
         return `${diffInDays} days ago`;
     };
 
+    const formatDateTime = (value) => {
+        if (!value) return 'N/A';
+        const d = new Date(value);
+        if (Number.isNaN(d.getTime())) return 'N/A';
+        return d.toLocaleString('en-GB', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+    };
+
     // Filter Data
     let filteredReports = [...reports];
     if (filterStatus !== 'All Status') {
@@ -420,12 +433,60 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                     className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
                     style={{ background: 'rgba(0, 0, 0, 0.65)', zIndex: 1055 }}
                 >
-                    <div className="card bg-dark text-white border border-secondary" style={{ width: '100%', maxWidth: '560px' }}>
-                        <div className="card-body">
+                    <div className="card bg-dark text-white border border-secondary" style={{ width: '100%', maxWidth: '560px', maxHeight: '85vh' }}>
+                        <div className="card-body" style={{ overflowY: 'auto' }}>
                             <h5 className="mb-3">{getDialogTitle()}</h5>
                             <p className="text-white-50 mb-3" style={{ fontSize: '0.9rem' }}>
                                 Report: <strong>{actionDialog.report?.title || 'N/A'}</strong>
                             </p>
+                            <div className="border border-secondary rounded p-3 mb-3" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                                <div className="row g-2" style={{ fontSize: '0.9rem' }}>
+                                    <div className="col-md-6">
+                                        <div className="text-white-50">Report ID</div>
+                                        <div>{actionDialog.report?.reportCode || `RPT-${actionDialog.report?.reportId || 'N/A'}`}</div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="text-white-50">Reported By</div>
+                                        <div>{actionDialog.report?.citizenName || 'N/A'}</div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="text-white-50">Reported Date</div>
+                                        <div>{formatDateTime(actionDialog.report?.createDate)}</div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="text-white-50">Last Updated</div>
+                                        <div>{formatDateTime(actionDialog.report?.modifiedDate)}</div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="text-white-50">Category</div>
+                                        <div>{actionDialog.report?.category || 'N/A'}</div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="text-white-50">Location</div>
+                                        <div>{actionDialog.report?.locationText || 'N/A'}</div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="text-white-50">Current Status</div>
+                                        <div>{getStatusString(actionDialog.report?.status)}</div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="text-white-50">Validation</div>
+                                        <div>{Number(actionDialog.report?.validationStatus) === 1 ? 'Validated' : 'Pending'}</div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="text-white-50">Current Priority</div>
+                                        <div>{getPriorityMeta(actionDialog.report?.priority).label}</div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="text-white-50">Resolved Date</div>
+                                        <div>{formatDateTime(actionDialog.report?.resolvedDate)}</div>
+                                    </div>
+                                    <div className="col-12">
+                                        <div className="text-white-50">Description</div>
+                                        <div>{actionDialog.report?.description || 'N/A'}</div>
+                                    </div>
+                                </div>
+                            </div>
 
                             {actionDialog.type === 'validation' && (
                                 <div className="mb-3">
