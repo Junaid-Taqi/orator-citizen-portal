@@ -27,7 +27,7 @@ const DisplayNav = ({user}) => {
     return (
         <nav className="displays-dashboard__nav">
             <div className="header-left">
-                <h5 className="header-title m-0 text-primary">MUNICIPALITY OF TISNO</h5>
+                <h5 className="header-title m-0 text-primary">{user?.groups?.[0]?.name || "Municipality"}</h5>
                 <p className="header-subtitle fs-12 text-white m-0">Monitor your digital signage network</p>
             </div>
 
