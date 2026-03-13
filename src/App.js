@@ -6,8 +6,10 @@ import DashboardHeader from './components/DashboardHeader';
 import DashboardOverview from './components/DashboardOverview';
 import AdminReportsStats from './components/AdminReportsStats';
 import SectionTabs from './components/SectionTabs';
+import { LanguageProvider, useTranslation } from './Services/Localization/Localization';
 
 function App() {
+  const { t, lang, setLanguage } = useTranslation();
   const dispatch = useDispatch();
   const { token, expiresIn, status, error } = useSelector((state) => state.auth);
 
@@ -58,12 +60,14 @@ function App() {
 
   return (
     <div className="App">
-      <DashboardHeader user={user} />
-      <main className="app-main">
-        <DashboardOverview user={user} />
-        <AdminReportsStats user={user} />
-        <SectionTabs user={user} />
-      </main>
+      <LanguageProvider>
+        <DashboardHeader user={user} />
+        <main className="app-main">
+          <DashboardOverview user={user} />
+          <AdminReportsStats user={user} />
+          <SectionTabs user={user} />
+        </main>
+      </LanguageProvider>
     </div>
   );
 }

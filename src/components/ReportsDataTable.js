@@ -3,8 +3,10 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { serverUrl } from '../Services/Constants/Constants';
+import { useTranslation } from '../Services/Localization/Localization';
 
 const ReportsDataTable = ({ reports, user, onRefresh }) => {
+    const { t } = useTranslation();
     const [currentPage, setCurrentPage] = useState(1);
     const [filterStatus, setFilterStatus] = useState('All Status');
     const [filterValidation, setFilterValidation] = useState('All Reports');
@@ -281,8 +283,8 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
             <div className="card-body">
                 <div className="d-flex justify-content-between align-items-start mb-4">
                     <div>
-                        <h5 className="card-title mb-0 text-white">Problem Reports Tracking</h5>
-                        <p className="text-primary mb-0 fs-12" style={{ opacity: 0.7 }}>Monitor and validate citizen-submitted reports</p>
+                        <h5 className="card-title mb-0 text-white">{t('problemReportsTracking')}</h5>
+                        <p className="text-primary mb-0 fs-12" style={{ opacity: 0.7 }}>{t('monitorAndValidateReports')}</p>
                     </div>
                     <FontAwesomeIcon icon={faEye} className="text-white opacity-50" />
                 </div>
@@ -294,7 +296,7 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
 
                 <div className="row mb-4">
                     <div className="col-md-6 mb-3 mb-4">
-                        <label className="text-white mb-1" style={{ fontSize: '0.85rem', opacity: 0.8 }}>Filter by Status</label>
+                        <label className="text-white mb-1" style={{ fontSize: '0.85rem', opacity: 0.8 }}>{t('filterByStatus')}</label>
                         <select className="form-select bg-dark text-white border-secondary" value={filterStatus} onChange={e => { setFilterStatus(e.target.value); setCurrentPage(1); }}>
                             <option>All Status</option>
                             <option>Pending</option>
@@ -304,7 +306,7 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                         </select>
                     </div>
                     <div className="col-md-6 mb-4">
-                        <label className="text-white mb-1" style={{opacity: 0.8 }}>Filter by Validation</label>
+                        <label className="text-white mb-1" style={{opacity: 0.8 }}>{t('filterByValidation')}</label>
                         <select className="form-select bg-dark text-white border-secondary" value={filterValidation} onChange={e => { setFilterValidation(e.target.value); setCurrentPage(1); }}>
                             <option>All Reports</option>
                             <option>Validated</option>
@@ -317,14 +319,14 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                     <table className="table table-borderless align-middle mb-0 reportDataTable" style={{ backgroundColor: 'transparent', borderCollapse: 'separate', borderSpacing: '0 6px' }}>
                         <thead>
                             <tr>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em'}}>Report Title</th>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Category</th>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Submitted By</th>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Location</th>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Priority</th>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Status</th>
-                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Validated</th>
-                                <th className="fw-normal text-center" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>Actions</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em'}}>{t('reportTitle')}</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>{t('category')}</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>{t('submittedBy')}</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>{t('location')}</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>{t('priority')}</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>{t('status')}</th>
+                                <th className="fw-normal" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>{t('validated')}</th>
+                                <th className="fw-normal text-center" style={{ color: '#A6B4C4', borderBottom: '1px solid rgba(144, 191, 231, 0.12)', padding: '1rem', fontSize: '0.7rem', letterSpacing: '0.05em' }}>{t('actions')}</th>
                             </tr>
                         </thead>
                         <tbody>

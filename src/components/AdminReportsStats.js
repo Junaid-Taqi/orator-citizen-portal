@@ -4,8 +4,10 @@ import { fetchAllReportsAdmin } from '../Services/Slices/AdminReportsSlice';
 import StatCard from './StatCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentAlt } from '@fortawesome/free-regular-svg-icons';
+import { useTranslation } from '../Services/Localization/Localization';
 
 const AdminReportsStats = ({ user }) => {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
     const { counters, status, error } = useSelector((state) => state.AdminReports);
 
@@ -22,19 +24,19 @@ const AdminReportsStats = ({ user }) => {
             <div className="card-body">
                 <div className="d-flex justify-content-between align-items-start mb-3">
                     <div>
-                        <h5 className="card-title mb-0 text-white" style={{ fontSize: '1.25rem' }}>Report Statistics</h5>
-                        <p className="text-primary mb-0 fs-12" style={{ opacity: 0.8 }}>Overview of citizen problem reports</p>
+                        <h5 className="card-title mb-0 text-white" style={{ fontSize: '1.25rem' }}>{t('reportStatistics')}</h5>
+                        <p className="text-primary mb-0 fs-12" style={{ opacity: 0.8 }}>{t('OverviewReports')}</p>
                     </div>
                     <FontAwesomeIcon icon={faCommentAlt} className="text-primary opacity-50" style={{ fontSize: '1.5rem' }} />
                 </div>
 
-                {status === 'loading' && <div className="text-white mb-3" style={{ opacity: 0.8 }}>Loading statistics...</div>}
-                {status === 'failed' && <div className="text-danger mb-3">Error fetching statistics: {error}</div>}
+                {status === 'loading' && <div className="text-white mb-3" style={{ opacity: 0.8 }}>{t('loadingStatistics')}</div>}
+                {status === 'failed' && <div className="text-danger mb-3">{t('errorFetchingStatistics:')} {error}</div>}
 
                 <div className="row g-3">
                     <div className="col-12 col-sm-6 col-md-4 col-lg-2 TotalReports" style={{ flex: '1' }}>
                         <StatCard
-                            title="Total Reports"
+                            title={t('totalReports')}
                             value={counters?.total || 0}
                             plain={false}
                             variant="purple"
@@ -42,7 +44,7 @@ const AdminReportsStats = ({ user }) => {
                     </div>
                     <div className="col-12 col-sm-6 col-md-4 col-lg-2" style={{ flex: '1' }}>
                         <StatCard
-                            title="Pending"
+                            title={t('pending')}
                             value={counters?.pending || 0}
                             plain={false}
                             variant="orange"
@@ -50,7 +52,7 @@ const AdminReportsStats = ({ user }) => {
                     </div>
                     <div className="col-12 col-sm-6 col-md-4 col-lg-2" style={{ flex: '1' }}>
                         <StatCard
-                            title="In Progress"
+                            title={t('inProgress')}
                             value={counters?.inProgress || 0}
                             plain={false}
                             variant="blue"
@@ -58,7 +60,7 @@ const AdminReportsStats = ({ user }) => {
                     </div>
                     <div className="col-12 col-sm-6 col-md-4 col-lg-2" style={{ flex: '1' }}>
                         <StatCard
-                            title="Resolved"
+                            title={t('resolved')}
                             value={counters?.resolved || 0}
                             plain={false}
                             variant="green"
@@ -66,7 +68,7 @@ const AdminReportsStats = ({ user }) => {
                     </div>
                     <div className="col-12 col-sm-6 col-md-4 col-lg-2" style={{ flex: '1' }}>
                         <StatCard
-                            title="Rejected"
+                            title={t('rejected')}
                             value={counters?.rejected || 0}
                             plain={false}
                             variant="purple"

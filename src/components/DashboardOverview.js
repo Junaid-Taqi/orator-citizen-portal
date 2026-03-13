@@ -9,8 +9,10 @@ import {
   faChartLine,
   faEye,
 } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from '../Services/Localization/Localization';
 
 const DashboardOverview = ({ user }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { counters, status, error } = useSelector((state) => state.ActiveCitizens);
 
@@ -33,8 +35,8 @@ const DashboardOverview = ({ user }) => {
       <div className="card-body">
         <div className="d-flex justify-content-between align-items-start mb-3">
           <div>
-            <h5 className="card-title mb-0 text-white" style={{ fontSize: '1.25rem' }}>Citizen Control Panel</h5>
-            <p className="text-primary mb-0 fs-12" style={{ opacity: 0.8 }}>Monitor citizen engagement, track reports, and manage user activity</p>
+            <h5 className="card-title mb-0 text-white" style={{ fontSize: '1.25rem' }}>{t('citizenControlPanel')}</h5>
+            <p className="text-primary mb-0 fs-12" style={{ opacity: 0.8 }}>{t('monitorCitizen')}</p>
           </div>
         </div>
 
@@ -44,7 +46,7 @@ const DashboardOverview = ({ user }) => {
         <div className="row g-3">
           <div className="col-12 col-sm-6 col-md-4">
             <StatCard
-              title="Total Citizens"
+              title={t('totalCitizens')}
               value={counters?.totalCitizens || 0}
               subtitle={formatSubtitle(counters?.totalCitizensSubtitle)}
               icon={faUsers}
@@ -53,7 +55,7 @@ const DashboardOverview = ({ user }) => {
           </div>
           <div className="col-12 col-sm-6 col-md-4">
             <StatCard
-              title="Active Today"
+              title={t('activeToday')}
               value={counters?.activeToday || 0}
               subtitle={formatSubtitle(counters?.activeChangeSubtitle)}
               icon={faCheckCircle}
@@ -62,7 +64,7 @@ const DashboardOverview = ({ user }) => {
           </div>
           <div className="col-12 col-sm-6 col-md-4">
             <StatCard
-              title="New This Week"
+              title={t('newThisWeek')}
               value={counters?.newThisWeek || 0}
               subtitle={formatSubtitle(counters?.newWeekChangeSubtitle)}
               icon={faEye}

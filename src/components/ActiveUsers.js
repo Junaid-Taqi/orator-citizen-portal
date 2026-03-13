@@ -2,8 +2,11 @@ import { faClock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from '../Services/Localization/Localization';
+
 
 const ActiveUsers = () => {
+  const { t } = useTranslation();
   const { usersList, status, error } = useSelector((state) => state.ActiveCitizens);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -24,13 +27,13 @@ const ActiveUsers = () => {
       <div className="card-body">
         <div className="d-flex justify-content-between align-items-start mb-3">
           <div>
-            <h5 className="card-title mb-0 text-white">Currently Logged In Citizens</h5>
-            <p className="text-primary mb-0 fs-12">Active user sessions today</p>
+            <h5 className="card-title mb-0 text-white">{t('currentlyLoggedInCitizens')}</h5>
+            <p className="text-primary mb-0 fs-12">{t('activeUserSessions')}</p>
           </div>
         </div>
 
-        {status === 'loading' && <div className="text-white mb-3" style={{ opacity: 0.8 }}>Loading users...</div>}
-        {status === 'failed' && <div className="text-danger mb-3">Error fetching users: {error}</div>}
+        {status === 'loading' && <div className="text-white mb-3" style={{ opacity: 0.8 }}>{t('loadingUsers')}</div>}
+        {status === 'failed' && <div className="text-danger mb-3">{t('errorFetchingUsers')}: {error}</div>}
 
         <div className="table-responsive">
           <table className="table table-borderless align-middle mb-0 loggedInCitizensTable">

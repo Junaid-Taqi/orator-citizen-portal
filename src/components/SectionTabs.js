@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import CitizenReportsTab from './CitizenReportsTab';
 import ActiveUsers from './ActiveUsers';
+import { useTranslation } from '../Services/Localization/Localization';
 
 const SectionTabs = ({ user }) => {
+  const { t } = useTranslation();
   const [active, setActive] = useState('engagement');
 
   return (
@@ -13,7 +15,7 @@ const SectionTabs = ({ user }) => {
             className={`nav-link cc-tab-btn fs-12 ${active === 'engagement' ? 'active' : ''}`}
             onClick={() => setActive('engagement')}
           >
-            Citizen Engagement
+            {t('citizenEngagement')}
           </button>
         </li>
         <li className="nav-item">
@@ -21,7 +23,7 @@ const SectionTabs = ({ user }) => {
             className={`nav-link cc-tab-btn fs-12 ${active === 'reports' ? 'active' : ''}`}
             onClick={() => setActive('reports')}
           >
-            Citizen Reports
+            {t('citizenReports')}
           </button>
         </li>
       </ul>

@@ -1,10 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronDown, faChevronUp, faSignOutAlt, faUser} from "@fortawesome/free-solid-svg-icons";
+import { useTranslation} from '../Services/Localization/Localization';
 
 const DisplayNav = ({user}) => {
     const [userMenuOpen, setUserMenuOpen] = useState(false);
     const userMenuRef = useRef(null);
+    const {t, lang, setLanguage} = useTranslation();
+
+    const handleLangChange = (e) => {
+        setLanguage(e.target.value);
+    };
 
     // Click outside to close menu logic
     useEffect(() => {
@@ -25,13 +31,27 @@ const DisplayNav = ({user}) => {
     };
 
     return (
-        <nav className="displays-dashboard__nav">
+        <nav className="displays-dashboard__nav flex-wrap">
             <div className="header-left">
                 <h5 className="header-title m-0 text-primary">{user?.groups?.[0]?.name || "Municipality"}</h5>
-                <p className="header-subtitle fs-12 text-white m-0">Monitor your digital signage network</p>
+                <p className="header-subtitle fs-12 text-white m-0">{t('monitorSignage')}</p>
             </div>
 
-            <div className="displays-dashboard__nav-user-wrap" ref={userMenuRef}>
+            <div className="displays-dashboard__nav-user-wrap d-flex gap-5" ref={userMenuRef}>
+
+                {/* Language Selector */}
+                <div className="header-lang">
+                    <select
+                        id="lang-select"
+                        value={lang}
+                        onChange={handleLangChange}
+                        className="form-select form-select-sm"
+                    >
+                        <option value="hr">Croatian</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+
                 <button
                     type="button"
                     className="displays-dashboard__nav-user"
@@ -39,14 +59,13 @@ const DisplayNav = ({user}) => {
                     aria-expanded={userMenuOpen}
                     aria-haspopup="true"
                 >
-                    <i className="pi pi-user nav-user-icon"/>
+                    <i className="pi pi-user nav-user-icon" />
 
                     <div className="nav-user-info">
                         <span className="nav-user-name">{user?.fullName || "User Name"}</span>
                         <span className="nav-user-email">{user?.email || "user@email.com"}</span>
                     </div>
 
-                    {/* Toggle Arrow Logic */}
                     <div className="nav-user-chevron-box">
                         <FontAwesomeIcon
                             icon={userMenuOpen ? faChevronUp : faChevronDown}
@@ -62,15 +81,17 @@ const DisplayNav = ({user}) => {
                             <FontAwesomeIcon icon={faUser} style={{marginRight: '10px'}}/>
                             Profile
                         </button>
+
                         <button
                             type="button"
                             className="displays-dashboard__nav-user-menu-item displays-dashboard__nav-user-menu-item--logout"
                             role="menuitem"
                             onClick={handleLogout}
                         >
-                            <FontAwesomeIcon icon={faSignOutAlt} style={{marginRight: '10px'}}/>
+                            <FontAwesomeIcon icon={faSignOutAlt} style={{ marginRight: '10px' }} />
                             Logout
                         </button>
+
                     </div>
                 )}
             </div>
