@@ -39,10 +39,10 @@ const ActiveUsers = () => {
           <table className="table table-borderless align-middle mb-0 loggedInCitizensTable">
             <thead>
               <tr>
-                <th>Citizen Name</th>
-                <th>Email</th>
-                <th>Login Time</th>
-                <th>Reports</th>
+                <th>{t('citizenName')}</th>
+                <th>{t('email')}</th>
+                <th>{t('loginTime')}</th>
+                <th>{t('reports')}</th>
               </tr>
             </thead>
             <tbody>
@@ -61,7 +61,7 @@ const ActiveUsers = () => {
                 status === 'succeeded' && (
                   <tr>
                     <td colSpan="4" className="text-center text-white" style={{ opacity: 0.7, padding: '20px' }}>
-                      No active citizens logged in today.
+                      {t('noActiveCitizens')}
                     </td>
                   </tr>
                 )
@@ -73,11 +73,11 @@ const ActiveUsers = () => {
         {/* Pagination */}
         {totalPages > 0 && (
           <div className="d-flex justify-content-between align-items-center mt-4">
-            <span className="text-white fs-12" style={{ opacity: 0.7 }}>Showing {startIndex + 1} to {Math.min(startIndex + itemsPerPage, displayUsers.length)} of {displayUsers.length}</span>
+            <span className="text-white fs-12" style={{ opacity: 0.7 }}>{t('showing')} {startIndex + 1} {t('to')} {Math.min(startIndex + itemsPerPage, displayUsers.length)} {t('of')} {displayUsers.length}</span>
             <div className="btn-group">
-              <button className="btn btn-sm btn-outline-secondary text-white fs-12" onClick={handlePrev} disabled={currentPage === 1}>Previous</button>
+              <button className="btn btn-sm btn-outline-secondary text-white fs-12" onClick={handlePrev} disabled={currentPage === 1}>{t('previous')}</button>
               <button className="btn btn-sm btn-secondary text-white fs-12" disabled>{currentPage}</button>
-              <button className="btn btn-sm btn-outline-secondary text-white fs-12" onClick={handleNext} disabled={currentPage === totalPages}>Next</button>
+              <button className="btn btn-sm btn-outline-secondary text-white fs-12" onClick={handleNext} disabled={currentPage === totalPages}>{t('next')}</button>
             </div>
           </div>
         )}

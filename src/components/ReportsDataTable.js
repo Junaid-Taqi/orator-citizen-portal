@@ -298,19 +298,19 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                     <div className="col-md-6 mb-3 mb-4">
                         <label className="text-white mb-1" style={{ fontSize: '0.85rem', opacity: 0.8 }}>{t('filterByStatus')}</label>
                         <select className="form-select bg-dark text-white border-secondary" value={filterStatus} onChange={e => { setFilterStatus(e.target.value); setCurrentPage(1); }}>
-                            <option>All Status</option>
-                            <option>Pending</option>
-                            <option>In Progress</option>
-                            <option>Resolved</option>
-                            <option>Rejected</option>
+                            <option>{t('allStatus')}</option>
+                            <option>{t('pending')}</option>
+                            <option>{t('inProgress')}</option>
+                            <option>{t('resolved')}</option>
+                            <option>{t('rejected')}</option>
                         </select>
                     </div>
                     <div className="col-md-6 mb-4">
                         <label className="text-white mb-1" style={{opacity: 0.8 }}>{t('filterByValidation')}</label>
                         <select className="form-select bg-dark text-white border-secondary" value={filterValidation} onChange={e => { setFilterValidation(e.target.value); setCurrentPage(1); }}>
-                            <option>All Reports</option>
+                            <option>{t('allReports')}</option>
                             <option>Validated</option>
-                            <option>Pending</option>
+                            <option>{t('pending')}</option>
                         </select>
                     </div>
                 </div>
@@ -355,21 +355,21 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                                             {allowed.showValidate && (
                                                 <button
                                                     className="btn btn-sm btn-outline-success me-2"
-                                                    title="Validate"
+                                                    title={t('validate')}
                                                     disabled={!!actionLoadingByReport[report.reportId]}
                                                     onClick={() => openValidationDialog(report, 1)}
                                                 >
-                                                    Validate
+                                                    {t('validate')}
                                                 </button>
                                             )}
                                             {allowed.showUnvalidate && (
                                                 <button
                                                     className="btn btn-sm btn-outline-secondary me-2"
-                                                    title="Unvalidate"
+                                                    title={t('unvalidate')}
                                                     disabled={!!actionLoadingByReport[report.reportId]}
                                                     onClick={() => openValidationDialog(report, 0)}
                                                 >
-                                                    Unvalidate
+                                                    {t('unvalidate')}
                                                 </button>
                                             )}
                                             {allowed.showInProgress && (
@@ -379,38 +379,38 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                                                     disabled={!!actionLoadingByReport[report.reportId]}
                                                     onClick={() => openStatusDialog(report, 2)}
                                                 >
-                                                    In Progress
+                                                    {t('inProgress')}
                                                 </button>
                                             )}
                                             {allowed.showResolve && (
                                                 <button
                                                     className="btn btn-sm btn-outline-info me-2"
-                                                    title="Resolve"
+                                                    title={t('resolve')}
                                                     disabled={!!actionLoadingByReport[report.reportId]}
                                                     onClick={() => openStatusDialog(report, 3)}
                                                 >
-                                                    Resolve
+                                                    {t('resolve')}
                                                 </button>
                                             )}
                                             {allowed.showReject && (
                                                 <button
                                                     className="btn btn-sm btn-outline-danger"
-                                                    title="Reject"
+                                                    title={t('reject')}
                                                     disabled={!!actionLoadingByReport[report.reportId]}
                                                     onClick={() => openStatusDialog(report, 4)}
                                                 >
-                                                    Reject
+                                                    {t('reject')}
                                                 </button>
                                             )}
                                             {!allowed.showValidate && !allowed.showUnvalidate && !allowed.showInProgress && !allowed.showResolve && !allowed.showReject && (
-                                                <span className="text-white-50" style={{ fontSize: '12px' }}>No actions</span>
+                                                <span className="text-white-50" style={{ fontSize: '12px' }}>{t('noActions')}</span>
                                             )}
                                         </td>
                                     </tr>
                                 )
                             }) : (
                                 <tr>
-                                    <td colSpan="8" className="text-center py-4" style={{ color: '#ADD8E6', opacity: 0.5, borderRadius: '10px' }}>No reports found matching criteria.</td>
+                                    <td colSpan="8" className="text-center py-4" style={{ color: '#ADD8E6', opacity: 0.5, borderRadius: '10px' }}>{t('noReportsFound')}</td>
                                 </tr>
                             )}
                         </tbody>
@@ -420,11 +420,11 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                 {/* Pagination */}
                 {totalPages > 0 && (
                     <div className="d-flex justify-content-between align-items-center mt-4">
-                        <span className="text-white" style={{ opacity: 0.7, fontSize: '0.85rem' }}>Showing {startIndex + 1} to {Math.min(startIndex + itemsPerPage, filteredReports.length)} of {filteredReports.length}</span>
+                        <span className="text-white" style={{ opacity: 0.7, fontSize: '0.85rem' }}>{t('showing')} {startIndex + 1} {t('to')} {Math.min(startIndex + itemsPerPage, filteredReports.length)} {t('of')} {filteredReports.length}</span>
                         <div className="btn-group">
-                            <button className="btn btn-sm btn-outline-secondary text-white" onClick={handlePrev} disabled={currentPage === 1}>Previous</button>
+                            <button className="btn btn-sm btn-outline-secondary text-white" onClick={handlePrev} disabled={currentPage === 1}>{t('previous')}</button>
                             <button className="btn btn-sm btn-secondary text-white" disabled>{currentPage}</button>
-                            <button className="btn btn-sm btn-outline-secondary text-white" onClick={handleNext} disabled={currentPage === totalPages}>Next</button>
+                            <button className="btn btn-sm btn-outline-secondary text-white" onClick={handleNext} disabled={currentPage === totalPages}>{t('next')}</button>
                         </div>
                     </div>
                 )}
@@ -444,47 +444,47 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                             <div className="border border-secondary rounded p-3 mb-3" style={{ background: 'rgba(255,255,255,0.03)' }}>
                                 <div className="row g-2" style={{ fontSize: '0.9rem' }}>
                                     <div className="col-md-6">
-                                        <div className="text-white-50">Report ID</div>
+                                        <div className="text-white-50">{t('reportId')}</div>
                                         <div>{actionDialog.report?.reportCode || `RPT-${actionDialog.report?.reportId || 'N/A'}`}</div>
                                     </div>
                                     <div className="col-md-6">
-                                        <div className="text-white-50">Reported By</div>
+                                        <div className="text-white-50">{t('reportedBy')}</div>
                                         <div>{actionDialog.report?.citizenName || 'N/A'}</div>
                                     </div>
                                     <div className="col-md-6">
-                                        <div className="text-white-50">Reported Date</div>
+                                        <div className="text-white-50">{t('reportedDate')}</div>
                                         <div>{formatDateTime(actionDialog.report?.createDate)}</div>
                                     </div>
                                     <div className="col-md-6">
-                                        <div className="text-white-50">Last Updated</div>
+                                        <div className="text-white-50">{t('lastUpdated')}</div>
                                         <div>{formatDateTime(actionDialog.report?.modifiedDate)}</div>
                                     </div>
                                     <div className="col-md-6">
-                                        <div className="text-white-50">Category</div>
+                                        <div className="text-white-50">{t('category')}</div>
                                         <div>{actionDialog.report?.category || 'N/A'}</div>
                                     </div>
                                     <div className="col-md-6">
-                                        <div className="text-white-50">Location</div>
+                                        <div className="text-white-50">{t('location')}</div>
                                         <div>{actionDialog.report?.locationText || 'N/A'}</div>
                                     </div>
                                     <div className="col-md-6">
-                                        <div className="text-white-50">Current Status</div>
+                                        <div className="text-white-50">{t('currentStatus')}</div>
                                         <div>{getStatusString(actionDialog.report?.status)}</div>
                                     </div>
                                     <div className="col-md-6">
-                                        <div className="text-white-50">Validation</div>
+                                        <div className="text-white-50">{t('validated')}</div>
                                         <div>{Number(actionDialog.report?.validationStatus) === 1 ? 'Validated' : 'Pending'}</div>
                                     </div>
                                     <div className="col-md-6">
-                                        <div className="text-white-50">Current Priority</div>
+                                        <div className="text-white-50">{t('currentPriority')}</div>
                                         <div>{getPriorityMeta(actionDialog.report?.priority).label}</div>
                                     </div>
                                     <div className="col-md-6">
-                                        <div className="text-white-50">Resolved Date</div>
+                                        <div className="text-white-50">{t('resolvedDate')}</div>
                                         <div>{formatDateTime(actionDialog.report?.resolvedDate)}</div>
                                     </div>
                                     <div className="col-12">
-                                        <div className="text-white-50">Description</div>
+                                        <div className="text-white-50">{t('description')}</div>
                                         <div>{actionDialog.report?.description || 'N/A'}</div>
                                     </div>
                                 </div>
@@ -493,14 +493,14 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                             {actionDialog.type === 'validation' && (
                                 <div className="mb-3">
                                     <label className="form-label">
-                                        Validation Remarks
+                                        {t('validationRemarks')}
                                     </label>
                                     <textarea
                                         className="form-control bg-dark text-white border-secondary"
                                         rows="3"
                                         value={actionDialog.validationRemarks}
                                         onChange={(e) => setActionDialog((prev) => ({ ...prev, validationRemarks: e.target.value }))}
-                                        placeholder="Add validation remarks..."
+                                        placeholder={t('addValidationRemarks')}
                                         disabled={actionDialog.submitting}
                                     />
                                 </div>
@@ -509,27 +509,27 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                             {actionDialog.type === 'status' && (
                                 <>
                                     <div className="mb-3">
-                                        <label className="form-label">Priority</label>
+                                        <label className="form-label">{t('priority')}</label>
                                         <select
                                             className="form-select bg-dark text-white border-secondary"
                                             value={String(actionDialog.priority)}
                                             onChange={(e) => setActionDialog((prev) => ({ ...prev, priority: Number(e.target.value) }))}
                                             disabled={actionDialog.submitting}
                                         >
-                                            <option value="1">Low</option>
-                                            <option value="2">Medium</option>
-                                            <option value="3">High</option>
+                                            <option value="1">{t('low')}</option>
+                                            <option value="2">{t('medium')}</option>
+                                            <option value="3">{t('high')}</option>
                                         </select>
                                     </div>
 
                                     <div className="mb-3">
-                                        <label className="form-label">Comment</label>
+                                        <label className="form-label">{t('comment')}</label>
                                         <textarea
                                             className="form-control bg-dark text-white border-secondary"
                                             rows="3"
                                             value={actionDialog.comment}
                                             onChange={(e) => setActionDialog((prev) => ({ ...prev, comment: e.target.value }))}
-                                            placeholder="Add status update comment..."
+                                            placeholder={t('addComment')}
                                             disabled={actionDialog.submitting}
                                         />
                                     </div>
@@ -537,14 +537,14 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                                     {actionDialog.nextStatus === 4 && (
                                         <div className="mb-3">
                                             <label className="form-label">
-                                                Rejection Reason <span className="text-danger">*</span>
+                                                {t('rejectionReason')} <span className="text-danger">*</span>
                                             </label>
                                             <textarea
                                                 className="form-control bg-dark text-white border-secondary"
                                                 rows="3"
                                                 value={actionDialog.rejectionReason}
                                                 onChange={(e) => setActionDialog((prev) => ({ ...prev, rejectionReason: e.target.value }))}
-                                                placeholder="Add rejection reason..."
+                                                placeholder={t('addRejectionReason')}
                                                 disabled={actionDialog.submitting}
                                             />
                                         </div>
@@ -564,14 +564,14 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                                     onClick={closeDialog}
                                     disabled={actionDialog.submitting}
                                 >
-                                    Cancel
+                                    {t('cancel')}
                                 </button>
                                 <button
                                     className="btn btn-primary"
                                     onClick={submitDialogAction}
                                     disabled={actionDialog.submitting}
                                 >
-                                    {actionDialog.submitting ? 'Saving...' : 'Submit'}
+                                    {actionDialog.submitting ? t('saving') : t('submit')}
                                 </button>
                             </div>
                         </div>

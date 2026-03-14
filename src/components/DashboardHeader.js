@@ -79,7 +79,7 @@ const DisplayNav = ({user}) => {
                     <div className="displays-dashboard__nav-user-menu" role="menu">
                         <button type="button" className="displays-dashboard__nav-user-menu-item" role="menuitem">
                             <FontAwesomeIcon icon={faUser} style={{marginRight: '10px'}}/>
-                            Profile
+                            {t('profile')}
                         </button>
 
                         <button
@@ -89,7 +89,7 @@ const DisplayNav = ({user}) => {
                             onClick={handleLogout}
                         >
                             <FontAwesomeIcon icon={faSignOutAlt} style={{ marginRight: '10px' }} />
-                            Logout
+                            {t('logout')}
                         </button>
 
                     </div>
