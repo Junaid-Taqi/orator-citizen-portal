@@ -502,7 +502,11 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                                         onChange={(e) => setActionDialog((prev) => ({ ...prev, validationRemarks: e.target.value }))}
                                         placeholder={t('addValidationRemarks')}
                                         disabled={actionDialog.submitting}
+                                        maxLength="500"
                                     />
+                                    <div className="char-counter text-end mt-1" style={{ fontSize: '0.75rem', opacity: 0.6 }}>
+                                        {actionDialog.validationRemarks.length}/500
+                                    </div>
                                 </div>
                             )}
 
@@ -531,7 +535,11 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                                             onChange={(e) => setActionDialog((prev) => ({ ...prev, comment: e.target.value }))}
                                             placeholder={t('addComment')}
                                             disabled={actionDialog.submitting}
+                                            maxLength="2000"
                                         />
+                                        <div className="char-counter text-end mt-1" style={{ fontSize: '0.75rem', opacity: 0.6 }}>
+                                            {actionDialog.comment.length}/2000
+                                        </div>
                                     </div>
 
                                     {actionDialog.nextStatus === 4 && (
@@ -546,7 +554,11 @@ const ReportsDataTable = ({ reports, user, onRefresh }) => {
                                                 onChange={(e) => setActionDialog((prev) => ({ ...prev, rejectionReason: e.target.value }))}
                                                 placeholder={t('addRejectionReason')}
                                                 disabled={actionDialog.submitting}
+                                                maxLength="500"
                                             />
+                                            <div className="char-counter text-end mt-1" style={{ fontSize: '0.75rem', opacity: 0.6 }}>
+                                                {actionDialog.rejectionReason.length}/500
+                                            </div>
                                         </div>
                                     )}
                                 </>
